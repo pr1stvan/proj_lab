@@ -1,0 +1,15 @@
+[submodule "dependencies/glfw"]
+	path = dependencies/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "dependencies/glm"]
+	path = dependencies/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "resources/simulation"]
+	path = resources/simulation
+	url = https://github.com/pr1stvan/simulation.git
+[submodule "dependencies/partioPRTForWindows"]
+	path = dependencies/partioPRTForWindows
+	url = https://github.com/pr1stvan/partioPRTForWindows.git
+[submodule "dependencies/AntTweakBar"]
+	path = dependencies/AntTweakBar
+	url = https://github.com/tschw/AntTweakBar
