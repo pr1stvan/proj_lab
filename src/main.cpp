@@ -341,7 +341,7 @@ void initializeAntTweakBar()
 		"group='display' label = 'free mode' key=space help = 'Change to free mode.' ");
 	TwAddVarRW(bar, "drawCube", TW_TYPE_BOOL8, &view.drawCube,
 		"group='display' label='show 3D grid' help='Draw a cube around the 3D grid' ");
-	TwAddVarRW(bar, "frameSpeed", TW_TYPE_FLOAT, &particleSystem->filePerSec,
+    TwAddVarRW(bar, "frameSpeed", TW_TYPE_FLOAT, &particleSystem->maxFps,
 		"group='display' label='max fps' min=1.0 max=1000.0 step=0.2 help='Adjust the number of prt file frames in one second' ");
 	TwAddVarRW(bar, "prtFolder", TW_TYPE_CSSTRING(100), prtFolder,
 		"group='file parameters' label='prt folder' help='This is the folder of the prt files.' ");

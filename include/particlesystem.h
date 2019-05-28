@@ -29,7 +29,7 @@ public:
 	int genPerParticle = 10;
 	//best name ever
 	float atwR=0.5f;
-	float filePerSec = 1000.0f;
+    float maxFps = 1000.0f;
 	glm::vec3 generatedParticleColor;
 	int generatedParticleFile = 0;
 	bool ignoreNullVelocity=true;
@@ -40,7 +40,6 @@ public:
 	int velocityArrayParts = 20;
 	Array3d * velocityArray = NULL;
 	FrameLoader *loader;
-	float loadTime = 1.0f;
 	float secs = 0;
 	bool end = false;
 

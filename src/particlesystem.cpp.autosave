@@ -196,10 +196,12 @@ int ParticleSystem::getFileNumber()
 {
 	return fileNumber;
 }
+
 const std::vector<Particle>& ParticleSystem::getOriginalParticles()
 {
 	return particles;
 }
+
 const std::vector<Particle>& ParticleSystem::getGeneratedParticles()
 {
 	return generatedParticles;
