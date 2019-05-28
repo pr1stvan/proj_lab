@@ -27,15 +27,6 @@ void ParticleSystem::deleteVelocityArray()
 	}
 }
 
-char* ParticleSystem::getFileFolder()
-{
-	if (loader != NULL)
-	{
-		return loader->getFileFolder();
-	}
-    else return NULL;
-}
-
 int ParticleSystem::getOriginalParticleCount()
 {
 	return loader->getParticleCountPerFrame(0);
@@ -45,7 +36,7 @@ int ParticleSystem::getGeneratedParitlceCount()
 	return loader->getParticleCountPerFrame(0)*genPerParticleNotAntweakbar;
 }
 
-void ParticleSystem::setFileFolder(char* fileFolder)
+bool ParticleSystem::loadFiles(std::vector<std::string> fileNames)
 {
 	particles = std::vector<Particle>(0);
 	generatedParticles = std::vector<Particle>(0);
@@ -71,18 +62,20 @@ void ParticleSystem::setFileFolder(char* fileFolder)
 	{
 		loader = new LoadRuntimeFrameLoader;
 	}
-	if (loader->load(fileFolder))//ha sikerul betolteni valamit 
+    if (loader->loadFiles(fileNames))//If it succesfully loads something
 	{
 		isFileLoaded = true;
 		
-		if (!onlyFileParticlesRuntime) //Ha kell generalni is
+        if (!onlyFileParticlesRuntime) //If particles needs to be generated
 		{
 			velocityArray = new Array3d(glm::vec3(0, 0, 0), cubeLength, velocityArrayParts);
 			
 			genPerParticleNotAntweakbar = genPerParticle; //Igy csak betolteskor modosulhat
 			generatedParticles = std::vector<Particle>(loader->getParticleCountPerFrame(0)*genPerParticleNotAntweakbar);
 		}
+        return true;
 	}
+    return false;
 }
 
 void ParticleSystem::generateParticles(int number)

@@ -49,8 +49,7 @@ public:
 	float getCubeLength();
 	void deleteVelocityArray();
 	void generateParticles(int fileNumber);
-	char* getFileFolder();
-	void setFileFolder(char* fileFolder);
+    bool loadFiles(std::vector<std::string> fileNames);
 	void initialize(); 
 	void Animate(float t);
 	int getFileNumber();

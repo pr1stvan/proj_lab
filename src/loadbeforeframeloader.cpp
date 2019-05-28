@@ -39,37 +39,32 @@ void LoadBeforeFrameLoader::calculateVelocities()
 	}
 }
 
-bool LoadBeforeFrameLoader::load(char *fileFolder)
+bool LoadBeforeFrameLoader::loadFiles(const std::vector<std::string>& files)
 {
+    this->fileNames = files;
+    if(fileNames.size() < 1)
+    {
+        return false; //Can't load nothing
+    }
 	printf("\nLoadBefore::load\n");
-	sprintf(file, "Nem tudom betolteni a fajlt.");//Alapertelemezett ertek
 
-	deleteFrames();
+    deleteFrames();
 
-	std::string fileName = getFileNameWithoutNumberFromFolderPath(fileFolder);
-	int fileNumber = 0;
+    if(!ParticleArrayLoader::getParticleCountFromFirstFile(std::string(fileNames[0]), particleCountPerFrame))
+    {
+        return false;
+    }
 
-	std::string filePath = createFilePath(fileFolder, fileName, fileNumber);
-
-	if (ParticleArrayLoader::getParticleCountFromFirstFile(std::string(filePath), particleCountPerFrame))
-	{
-		sprintf(file, "%s", fileFolder);//Ha valamit sikerult betolteni, a folder path -ot mar vissza tudja adni az antweakBarnak a loader
-	}
-	else return false;//Nem sikeres a beolvasas, mivel meg az elso fajlt sem sikerult
-
-	while (true)
-	{
-		std::vector<Particle> particleArray;
-		if (!ParticleArrayLoader::loadParticlesFromFile(particleArray, filePath))
-		{
-			break;
-		}
-		printf("Number of particles: %d\n", particleArray.size());
-		frames.push_back(particleArray);
-		//=========================================================
-		fileNumber++;
-		filePath = createFilePath(fileFolder, fileName, fileNumber);
-	}
+    for(unsigned i = 0; i < fileNames.size(); i++)
+    {
+        std::vector<Particle> particleArray;
+        bool succes = ParticleArrayLoader::loadParticlesFromFile(particleArray, fileNames[i]);
+        if(succes)
+        {
+            printf("Number of particles: %d\n", particleArray.size());
+            frames.push_back(particleArray);
+        }
+    }
 	printf("\n");
 	calculateVelocities();
 	return true;

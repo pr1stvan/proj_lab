@@ -8,7 +8,7 @@
 class FrameLoader 
 {
 protected:
-	char file[100] = "";
+    std::vector<std::string> fileNames;
 	int particleCountPerFrame;
 public:
 	int getParticleCountPerFrame(int index);
@@ -19,5 +19,5 @@ public:
 	std::string createFilePath(char *folderPath, std::string fileName, int fileNumber);
 
     virtual bool getFrame(unsigned int index, std::vector<Particle>& particleArray) = 0;
-	virtual bool load(char *fileFolder) = 0;
+    virtual bool loadFiles(const std::vector<std::string>& fileNames) = 0;
 };

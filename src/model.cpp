@@ -1,13 +1,15 @@
 #include "Model.h"
 
-Model::Model() :camera(0, 0, 40) {
+Model::Model() :camera(0, 0, 40)
+{
 	lightSource1.position = glm::vec3(4, 4, 4);
 	lightSource2.position = glm::vec3(-4, 4, -4);
 	lightSource1.color = glm::vec3(1, 1, 1);
 	lightSource2.color = glm::vec3(1, 1, 1);
 }
 
-void Model::initialize() {
+void Model::initialize()
+{
 	particleSystem = new ParticleSystem();
 	particleSystem->initialize();
 	//Default values
@@ -31,20 +33,24 @@ void Model::cleanUp()
 	delete particleSystem;
 }
 
-void Model::animate(float dt) {
+void Model::animate(float dt)
+{
 	camera.Animate(dt);	
 	particleSystem->Animate(dt);
 }
 
-glm::vec3 Model::getCameraPosition() {
+glm::vec3 Model::getCameraPosition()
+{
 	return camera.getPosition();
 }
 
-glm::vec3 Model::getCameraOrientation() {
+glm::vec3 Model::getCameraOrientation()
+{
 	return camera.getOrientation();
 }
 
-float Model::getCameraViewAngle() {
+float Model::getCameraViewAngle()
+{
 	return camera.getViewAngle();
 }
 
@@ -67,6 +73,7 @@ const std::vector<Particle>& Model::getGeneratedParticles()
 	return particleSystem->getGeneratedParticles();
 }
 
-int Model::getFileNumber() {
+int Model::getFileNumber()
+{
 	return particleSystem->getFileNumber();
 }

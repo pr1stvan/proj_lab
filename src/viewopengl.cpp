@@ -124,32 +124,31 @@ void ViewOpenGL::initializeParticleCenterBuffers(Model* model)
 
 void ViewOpenGL::setWindowSize(unsigned int windowWidth, unsigned int windowHeight) 
 {
-	this->windowWidth = windowWidth;
-	this->windowHeight = windowHeight;
+    this->windowWidth = windowWidth;
+    this->windowHeight = windowHeight;
 	
-	glViewport(0, 0, windowWidth, windowHeight);
+    glViewport(0, 0, windowWidth, windowHeight);
 }
 
 void ViewOpenGL::initializeUniformVariables() 
 {
-	particleShader_r_ID = getUniformLocation(particleDrawShaderProgram, "r");
-	particleShader_VP_ID = getUniformLocation(particleDrawShaderProgram, "VP");
-	particleShader_V_ID = getUniformLocation(particleDrawShaderProgram, "V");
-	particleShader_Smoothness_ID = getUniformLocation(particleDrawShaderProgram, "Smoothness");
-	particleShader_AmbientPower_ID = getUniformLocation(particleDrawShaderProgram, "AmbientPower");
-	particleShader_Light1Position_worldspace_ID = getUniformLocation(particleDrawShaderProgram, "Light1Position_worldspace");
-	particleShader_Light1Color_ID = getUniformLocation(particleDrawShaderProgram, "Light1Color");
-	particleShader_Light1Power_ID = getUniformLocation(particleDrawShaderProgram, "Light1Power");
-	particleShader_Light1SpecularPower_ID = getUniformLocation(particleDrawShaderProgram, "Light1SpecularPower");
-	particleShader_Light2Position_worldspace_ID = getUniformLocation(particleDrawShaderProgram, "Light2Position_worldspace");
-	particleShader_Light2Color_ID = getUniformLocation(particleDrawShaderProgram, "Light2Color");
-	particleShader_Light2Power_ID = getUniformLocation(particleDrawShaderProgram, "Light2Power");
-	particleShader_Light2SpecularPower_ID = getUniformLocation(particleDrawShaderProgram, "Light2SpecularPower");
+    particleShader_r_ID = getUniformLocation(particleDrawShaderProgram, "r");
+    particleShader_VP_ID = getUniformLocation(particleDrawShaderProgram, "VP");
+    particleShader_V_ID = getUniformLocation(particleDrawShaderProgram, "V");
+    particleShader_Smoothness_ID = getUniformLocation(particleDrawShaderProgram, "Smoothness");
+    particleShader_AmbientPower_ID = getUniformLocation(particleDrawShaderProgram, "AmbientPower");
+    particleShader_Light1Position_worldspace_ID = getUniformLocation(particleDrawShaderProgram, "Light1Position_worldspace");
+    particleShader_Light1Color_ID = getUniformLocation(particleDrawShaderProgram, "Light1Color");
+    particleShader_Light1Power_ID = getUniformLocation(particleDrawShaderProgram, "Light1Power");
+    particleShader_Light1SpecularPower_ID = getUniformLocation(particleDrawShaderProgram, "Light1SpecularPower");
+    particleShader_Light2Position_worldspace_ID = getUniformLocation(particleDrawShaderProgram, "Light2Position_worldspace");
+    particleShader_Light2Color_ID = getUniformLocation(particleDrawShaderProgram, "Light2Color");
+    particleShader_Light2Power_ID = getUniformLocation(particleDrawShaderProgram, "Light2Power");
+    particleShader_Light2SpecularPower_ID = getUniformLocation(particleDrawShaderProgram, "Light2SpecularPower");
 
-	simpleShader_MVP_ID = getUniformLocation(simpleShaderProgram, "MVP");
-	simpleShader_transparency_ID = getUniformLocation(simpleShaderProgram, "transparency");
-	simpleShader_vertexColor_ID = getUniformLocation(simpleShaderProgram, "vertexColor");
-
+    simpleShader_MVP_ID = getUniformLocation(simpleShaderProgram, "MVP");
+    simpleShader_transparency_ID = getUniformLocation(simpleShaderProgram, "transparency");
+    simpleShader_vertexColor_ID = getUniformLocation(simpleShaderProgram, "vertexColor");
 }
 
 void ViewOpenGL::renderParticlesOpenGL() 

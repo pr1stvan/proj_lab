@@ -14,5 +14,5 @@ public:
 	void deleteFrame(Particle* array);
 	char* getFileFolder();
     bool getFrame(unsigned int index, std::vector<Particle>& particleArray);
-	bool load(char *fileFolder);
+    bool loadFiles(const std::vector<std::string>& fileNames);
 };

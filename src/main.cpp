@@ -178,17 +178,13 @@ void TW_CALL getPrtFolder(void *value, void *clientData)
 void TW_CALL loaderButton(void *clientData)
 {
 	ParticleSystem *particleSystem = model.particleSystem;
-	particleSystem->setFileFolder(prtFolder);
-	view.initializeParticleCenterBuffers(&model);
+    if(!particleSystem->loadFiles(getPrtFiles(prtFolder)))
+    {
+        char str[25] = "prt files not found";
+        strcpy(prtFolder,str);
+    }
+    view.initializeParticleCenterBuffers(&model);
 
-	char *fileName = particleSystem->getFileFolder();
-
-	int i;
-	for (i = 0; fileName[i] != 0; i++) 
-	{
-		prtFolder[i] = fileName[i];
-	}
-	prtFolder[i] = 0;
 
 	//For calculating average fps
 	counterForFpsAvg = 0;
