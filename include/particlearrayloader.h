@@ -10,6 +10,8 @@
 class ParticleArrayLoader
 {
 public:
-	static bool loadParticlesFromFile(std::vector<Particle> &particleArray, std::string filePath);
-	static bool getParticleCountFromFirstFile(std::string filePath, int& particleCount);
+    static bool loadParticlesFromFile(std::vector<Particle> &particleArray,
+                                      std::string filePath);
+    static bool getParticleCountFromFirstFile(std::string filePath,
+                                              int& particleCount);
 };

@@ -5,20 +5,20 @@
 
 struct Particle
 {
-	glm::vec3 pos;
-	glm::vec3 color;
-	glm::vec3 v;
-	
+    glm::vec3 pos;
+    glm::vec3 color;
+    glm::vec3 v;
+    
 
-	Particle() :pos(0, 0, 0), color(1.0f,1.0f,1.0f),v(0, 0, 0)
-	{
+    Particle() :pos(0, 0, 0), color(1.0f,1.0f,1.0f),v(0, 0, 0)
+    {
 
-	}
-	Particle(glm::vec3 pos, glm::vec3 v) :pos(pos), v(v)
-	{
+    }
+    Particle(glm::vec3 pos, glm::vec3 v) :pos(pos), v(v)
+    {
 
-	}
-	void move(float t);
+    }
+    void move(float t);
 
 };
 

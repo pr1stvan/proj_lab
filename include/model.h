@@ -7,33 +7,33 @@
 #include "ParticleSystem.h"
 
 struct Model {
-	LightSource lightSource1;
-	LightSource lightSource2;
+    LightSource lightSource1;
+    LightSource lightSource2;
 
-	Camera camera;
-	ParticleSystem* particleSystem;
+    Camera camera;
+    ParticleSystem* particleSystem;
 
-	Model();
-	void animate(float dt);
-	void initialize();
-	void cleanUp();
+    Model();
+    void animate(float dt);
+    void initialize();
+    void cleanUp();
 
-	glm::vec3 getCameraPosition();
-	glm::vec3 getCameraOrientation();
-	float getCameraViewAngle();
+    glm::vec3 getCameraPosition();
+    glm::vec3 getCameraOrientation();
+    float getCameraViewAngle();
 
-	LightSource getLightSource1();
-	LightSource getLightSource2();
+    LightSource getLightSource1();
+    LightSource getLightSource2();
 
-	const std::vector<Particle>& getOriginalParticles();
-	const std::vector<Particle>& getGeneratedParticles();
+    const std::vector<Particle>& getOriginalParticles();
+    const std::vector<Particle>& getGeneratedParticles();
 
-	int getOriginalParticleCount();
-	int getGeneratedParticleCount();
+    int getOriginalParticleCount();
+    int getGeneratedParticleCount();
 
-	int getFileNumber();
+    int getFileNumber();
 
-	float getCubeLength() {
-		return particleSystem->cubeLength;
-	}
+    float getCubeLength() {
+        return particleSystem->cubeLength;
+    }
 };

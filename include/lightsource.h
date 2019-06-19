@@ -3,10 +3,10 @@
 #include "glm.hpp"
 
 struct LightSource {
-	glm::vec3 position;
-	glm::vec3 color;
-	float lightPower;
-	float specularPower;
+    glm::vec3 position;
+    glm::vec3 color;
+    float lightPower;
+    float specularPower;
 
-	LightSource();
+    LightSource();
 };

@@ -3,7 +3,9 @@
 void ShaderLoader::getErrorInfo(unsigned int handle)
 {
     int logLen;
+    
     glGetShaderiv(handle, GL_INFO_LOG_LENGTH, &logLen);
+    
     if (logLen > 0)
     {
         char * log = new char[logLen];
@@ -17,6 +19,7 @@ void ShaderLoader::getErrorInfo(unsigned int handle)
 void ShaderLoader::checkShader(unsigned int shader, const char *message)
 {
     int OK;
+    
     glGetShaderiv(shader, GL_COMPILE_STATUS, &OK);
     if (!OK)
     {
@@ -28,7 +31,9 @@ void ShaderLoader::checkShader(unsigned int shader, const char *message)
 void ShaderLoader::checkLinking(unsigned int program)
 {
     int OK;
+    
     glGetProgramiv(program, GL_LINK_STATUS, &OK);
+    
     if (!OK)
     {
         printf("Failed to link shader program!\n");
@@ -36,32 +41,39 @@ void ShaderLoader::checkLinking(unsigned int program)
     }
 }
 
-unsigned int ShaderLoader::createShaderProgramFromSource(const char *vertexSource, const char *fragmentSource)
+unsigned int ShaderLoader::createShaderProgramFromSource(
+    const char *vertexSource, 
+    const char *fragmentSource)
 {
     // Create vertex shader from string
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    
     if (!vertexShader)
     {
         printf("Error in vertex shader creation\n");
         exit(1);
     }
+    
     glShaderSource(vertexShader, 1, &vertexSource, NULL);
     glCompileShader(vertexShader);
     checkShader(vertexShader, "Vertex shader error");
 
     // Create fragment shader from string
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    
     if (!fragmentShader)
     {
         printf("Error in fragment shader creation\n");
         exit(1);
     }
+    
     glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
     glCompileShader(fragmentShader);
     checkShader(fragmentShader, "Fragment shader error");
 
     // Attach shaders to a single program
     unsigned int programID = glCreateProgram();
+    
     if (!programID)
     {
         printf("Error in shader program creation\n");

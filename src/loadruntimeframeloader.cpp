@@ -7,17 +7,19 @@ bool LoadRuntimeFrameLoader::loadFiles(const std::vector<std::string>& files)
     {
         return false;
     }
-	printf("\nLoadRuntime::load\n\n");
+    printf("\nLoadRuntime::load\n\n");
 
-    if (!ParticleArrayLoader::getParticleCountFromFirstFile(fileNames[0], particleCountPerFrame))
-	{
+    if (!ParticleArrayLoader::getParticleCountFromFirstFile(
+                fileNames[0], particleCountPerFrame))
+    {
         return false;
     }
 
-	return true;
+    return true;
 }
 
-bool LoadRuntimeFrameLoader::getFrame(unsigned int index, std::vector<Particle>& particleArrayOut)
+bool LoadRuntimeFrameLoader::getFrame(unsigned int index,
+                                      std::vector<Particle>& particleArrayOut)
 {
     if(index > fileNames.size() -1)
     {
@@ -28,13 +30,15 @@ bool LoadRuntimeFrameLoader::getFrame(unsigned int index, std::vector<Particle>&
     }
     else if(index == fileNames.size() - 1)
     {
-        if(!ParticleArrayLoader::loadParticlesFromFile(particleArrayOut, fileNames[index]))
+        if(!ParticleArrayLoader::loadParticlesFromFile(particleArrayOut,
+                                                       fileNames[index]))
         {
             particleArrayOut = std::vector<Particle>(1);
             particleArrayOut[0].color = glm::vec3(1, 0, 0);
             particleArrayOut[0].pos = glm::vec3(0, 0, 0);
             return false;
         }
+        
         printf("Number of particles: %d\n", particleArrayOut.size());
 
         for (int i = 0; i < particleCountPerFrame; i++)
@@ -46,33 +50,38 @@ bool LoadRuntimeFrameLoader::getFrame(unsigned int index, std::vector<Particle>&
     {
         std::vector<Particle> particleArrayNextFile;
 
-        if(!ParticleArrayLoader::loadParticlesFromFile(particleArrayOut, fileNames[index]) ||
-                !ParticleArrayLoader::loadParticlesFromFile(particleArrayNextFile, fileNames[index + 1]))
+        if(
+                !ParticleArrayLoader::loadParticlesFromFile(particleArrayOut,
+                                                            fileNames[index]) ||
+                !ParticleArrayLoader::loadParticlesFromFile(
+                    particleArrayNextFile, fileNames[index + 1]))
         {
             particleArrayOut = std::vector<Particle>(1);
             particleArrayOut[0].color = glm::vec3(1, 0, 0);
             particleArrayOut[0].pos = glm::vec3(0, 0, 0);
             return false;
         }
+        
         printf("Number of particles: %d\n", particleArrayOut.size());
 
         for (int i = 0; i < particleCountPerFrame; i++)
         {
-            particleArrayOut[i].v = particleArrayNextFile[i].pos - particleArrayOut[i].pos;
+            particleArrayOut[i].v =
+                    particleArrayNextFile[i].pos - particleArrayOut[i].pos;
         }
     }
-	return true;
+    return true;
 }
 
 LoadRuntimeFrameLoader::~LoadRuntimeFrameLoader()
 {
-	//Do nothing
+    //Do nothing
 }
 
 void LoadRuntimeFrameLoader::deleteFrame(Particle* array)
 {
-	if (array != NULL)
-	{
-		delete[] array;
-	}
+    if (array != NULL)
+    {
+        delete[] array;
+    }
 }

@@ -16,6 +16,8 @@ struct Sphere
     std::vector<unsigned int> indexes;
 };
 
-Sphere createSphereOpenGl(int verticalSubdivision, int horizontalSubdivision, float r);
+Sphere createSphereOpenGl(int verticalSubdivision,
+                          int horizontalSubdivision,
+                          float r);
 
 #endif // SPHERE_H_INCLUDED
